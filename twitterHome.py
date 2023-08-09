@@ -16,18 +16,14 @@ class TwitterHome:
         searchInput.send_keys(Keys.ENTER)
         time.sleep(3)
         searchedTweets = self.browser.find_elements(By.XPATH , '//div[@data-testid="tweetText"]')
-        print('-'*35)
         for tweet in searchedTweets:
-            print(tweet.text)
-            print('-'*35)
+            return(tweet.text)
         while True:
             choice = input('Daha Fazla ?(Y/N): ')
             if choice == 'Y':
                 self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 searchedTweets = self.browser.find_elements(By.XPATH , '//div[@data-testid="tweetText"]')
-                print('-'*35)
                 for tweet in searchedTweets:
-                    print(tweet.text)
-                    print('-'*35)
+                    return(tweet.text)
             else:
                 break
